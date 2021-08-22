@@ -85,10 +85,11 @@ header h1{
 }
 @media screen and (max-width: 425px){
   .modal-container{
-    width: 10rem;
-    margin: auto;
+    padding: 4rem;
+    margin: 0;
   }
   .modal{
-    width: 9rem;
+    width: 40%;
+    margin-left: -20px !important;
   }
 }
