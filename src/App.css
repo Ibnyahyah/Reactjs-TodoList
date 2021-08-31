@@ -1,5 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 *{
-  box-sizing: content-box;
+  margin:0;
+  padding:0;
+}
+body{
+  font-family: 'Lato', sans-serif;
 }
 .main{
   width: 50%;
@@ -8,9 +13,7 @@
 header{
   background-color: #800;
   padding: 1rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  text-align: center;
   box-shadow: 0 1px 4px rgba(0,0,0,0.2);
 }
 header h1{
@@ -18,22 +21,43 @@ header h1{
   font-weight: 600;
   font-family: Georgia, 'Times New Roman', Times, serif;
 }
+form{
+  width: 90%;
+  margin:auto;
+  background: #fff;
+  box-shadow: 1px 6px 6px rgba(0,0,0,0.75);
+  padding: 1rem;
+}
+form input{
+  width: 100%;
+  padding: 0.5rem 0 0.5rem 0;
+  outline: none;
+  border: 1px solid #800;
+  font-size: 23px;
+}
+form button{
+  width: 100%;
+  margin:10px 0 10px 0;
+}
 .todo-card{
   width: 100%;
+  margin:auto;
   background-color: #fff;
   box-shadow: 0 1px 4px rgba(0,0,0,0.75);
   border-radius: 6px;
+  margin: 10px 0 10px 0;
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin: 10px 0 10px 0;
 } 
 .todos-check{
-  display: flex;
-  justify-content: space-between;
+  display: inline-flex;
+  justify-content: left;
   align-items: center;
+  width: 100%;
+  margin-left: 5px;      
 }
+
 .modal-container{
   width: 25rem;
   margin: auto;
@@ -75,6 +99,9 @@ header h1{
   height: 100%;
   top:0;
   left:0;
+}
+.del{
+  float:right;
 }
 
 @media screen and (max-width: 940px) {

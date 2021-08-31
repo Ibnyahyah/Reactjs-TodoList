@@ -1,31 +1,61 @@
-import { useState } from 'react';
-import Modal from './Modal';
-import Backdrop from './Backdrop';
+import { useState, useEffect } from 'react';
+import TodoList from './TodoList';
 
-function Todo(props){
-
-    const [ modalIsOpen, setModalIsOpen ] = useState();
-
-    function deleteHandler(){
-        setModalIsOpen(true);
-    }
-    function closeModalHandler(){
-        setModalIsOpen(false)
-    }
-
+// const TodoData = [
+//     {
+//       id: 1,
+//       title: 'working on amam application',
+//       complete: false
+//     },
+//     {
+//       id: 2,
+//       title: 'bring up a new tod app',
+//       complete: false
+//     },
+//     {
+//       id: 3,
+//       title: 'bring up a new tod app',
+//       complete: false
+//     }
+//   ]
+function Todo(){
+        const [isLoading, setIsLoading] = useState(true);
+        const [loadedTodo, setLoadedTodo] = useState([]);
+    
+        useEffect(()=>{
+            setIsLoading(true);
+            fetch('https://my-first-project-a37f4-default-rtdb.firebaseio.com/chat.json')
+        
+                .then((response)=>{
+                    return response.json();
+                })
+                .then((data) => {
+                    const chat = [];
+    
+                    for(const key in data){
+                        const chats = {
+                            id : key,
+                            ...data[key]
+                        };
+    
+                        chat.push(chats);
+                    }
+    
+                    setIsLoading(false);
+                    setLoadedTodo(chat);
+                })
+        },[]);
+    
+        if (isLoading) {
+            return (
+                <section className="loading">
+                    <p>Loading...</p>
+                </section>
+            )
+        }
     return (
             <div>
-            <div className='todo-card'>
-                <div className="todos-check" >
-                <input type="checkbox" />{' '}
-                <p>{props.text}</p>
-                </div>
-                <button className="btn" onClick={deleteHandler}>Delete</button>
-               
-            </div>
-            { modalIsOpen ? <Modal onCancel={closeModalHandler} onComfirm={closeModalHandler}/> : null}
-            { modalIsOpen ? <Backdrop onCancel={closeModalHandler}/> : null }
-            
+                <TodoList todos={loadedTodo}/>
         </div>
   )
 }

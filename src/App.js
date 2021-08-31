@@ -1,44 +1,34 @@
 import './App.css';
 import React from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Todo from './Component/Todo';
+import { Link } from 'react-router-dom';
+import TodoInput from './Component/TodoInput';
 
 class App extends React.Component{
- 
-  state = {
-    todos: [
-      {
-        id: 1,
-        title: '',
-        complete: false
-      },
-      {
-        id: 1,
-        title: 'bring up a new tod app',
-        complete: false
-      },
-      {
-        id: 1,
-        title: 'bring up a new tod app',
-        complete: false
-      }
-    ]
-  }
    render() {
   return (
+    <Router>
     <div>  
       <div  className="main">
         <header>
-          <h1>Wee Todo</h1>
+          <h1>Wedo</h1>
+          <nav>
+            <Link to="/" style={getStyle}>Todos</Link>{'  |  '}<Link to="/addTodos" style={getStyle}> Todos</Link>
+          </nav>
         </header>
-          <Todo text='bring up a new tod app' />
-          <Todo text='Still building its up'/>
-          <Todo text='just a little more to go '/>
-          <Todo text='follow me up'/>
-          <Todo text='@bnibnibn or @ibnyahyah '/>
+          <Route exact path="/" component={Todo}/>
+          <Route path="/addtodos" component={TodoInput}/>
       </div>
     </div>
+    </Router>
   );
   }
+}
+const getStyle={
+  color: 'rgba(0,0,0,0.75)',
+  textDecoration: 'none',
+  fontWeight: '600',
 }
 
 export default App;
