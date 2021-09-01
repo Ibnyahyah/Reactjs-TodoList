@@ -14,7 +14,7 @@ class App extends React.Component{
         <header>
           <h1>Wedo</h1>
           <nav>
-            <Link to="/" style={getStyle}>Todos</Link>{'  |  '}<Link to="/addTodos" style={getStyle}> Todos</Link>
+            <Link to="/" style={getStyle}>Docs</Link>{'  |  '}<Link to="/addTodos" style={getStyle}> Add-Docs</Link>
           </nav>
         </header>
           <Route exact path="/" component={Todo}/>
@@ -29,6 +29,7 @@ const getStyle={
   color: 'rgba(0,0,0,0.75)',
   textDecoration: 'none',
   fontWeight: '600',
+  fontFamily: "'Lato', sans-serif",
 }
 
 export default App;

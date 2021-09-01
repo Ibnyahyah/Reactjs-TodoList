@@ -14,7 +14,7 @@ function TodoInput(){
         const todoData ={
             title: enterText,
         };
-        fetch('https://my-first-project-a37f4-default-rtdb.firebaseio.com/chat.json',{
+        fetch('https://wedo-diary-default-rtdb.firebaseio.com/docs.json',{
             method: 'POST',
             body: JSON.stringify(todoData),
             headers:{
@@ -26,14 +26,16 @@ function TodoInput(){
     }
     return( 
         <div>
-            <p style={{ textAlign: 'center',color:'rgba(0,0,0,0.75)',fontSize: '20px', marginTop:'100px'}}>keep your todo or document here</p>
+            <p style={{ textAlign: 'center',color:'rgba(0,0,0,0.75)',fontSize: '20px', marginTop:'100px'}}>keep your document safe with us.</p>
             <form onSubmit={submitHandler}>
                 <input 
                 type="text"
                 name="title"
                 placeholder="Enter your Todos"
                 ref={TextInputRef}
-                />
+                /><br/><br/>
+                <input type="file"/>
+                
                 <button>Add</button>
             </form>
         </div>

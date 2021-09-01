@@ -103,6 +103,12 @@ form button{
 .del{
   float:right;
 }
+.loading{
+  display: flex;
+  justify-content:center;
+  align-items:center;
+  margin-top: 100px;
+}
 
 @media screen and (max-width: 940px) {
   .main{
